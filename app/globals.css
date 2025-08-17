@@ -3,13 +3,17 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-secondary: #F6F6FD;
+  --color-tertiary: #6262f4;
+  --color-success: #06D6A0;
+  --color-warning: #FF445B;
+  --color-white: #F6F6F6;
+  --color-dark-border: #797979;
+  --color-light-border: #EFF0F1;
+  --color-font: #171717;
+  --color-light-font: #828ABA;
+  --color-footer: #121212;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +23,89 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  @media (width >=475px) {
+    max-width: 100%;
+  }
+
+  @media (width >=992px) {
+    max-width: 992px;
+  }
+
+  @media (width >=1200px) {
+    max-width: 1200px;
+  }
+
+  @media (width >=1400px) {
+    max-width: 1400px;
+  }
+
+}
+
+
+
+@layer base {
+
+  *,
+  ::before,
+  ::after {
+    border-color: var(--color-light-border);
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-switzer);
+  }
+
+  body:has(.small-nav)>div {
+    padding-top: 125px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #ededed;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 0.5rem;
+    background-color: var(--color-primary);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-primary);
+  }
+
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+html[dir="rtl"] body {
+  font-family: var(--font-din);
 }
