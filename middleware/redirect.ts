@@ -9,6 +9,7 @@ export async function redirectMiddleware(
         const url = new URL(request.nextUrl.origin + newPathname);
         return NextResponse.redirect(url);
     }
-
-    return response;
+     const headers = new Headers(request.headers);
+      headers.set("x-current-path", request.nextUrl.pathname);
+      return NextResponse.next({ headers });
 }

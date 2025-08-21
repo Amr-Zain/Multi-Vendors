@@ -4,8 +4,14 @@
     "ar": "إنجليزي",
     "en": "عربي"
   },
+
   "NAV": {
     "lang": "rtl",
+    "policy": "سياسة الإسترجاع والخصوصية",
+    "FAQ": "الأسئلة الشائعة",
+    "support": "الدعم الفني",
+    "location":"توصيل الي:",
+    "login":"تسجيل الدخول",
     "home": "الرئيسية",
     "about": "من نحن",
     "Services": "الخدمات",
@@ -18,11 +24,29 @@
     "mainNavigation": "التنقل الرئيسي",
     "menu": "القائمة",
     "orders": "الطلبات",
-    "login": "تسجيل الدخول",
     "offers": "العروض",
-    "privacy": "سياسة الخصوصية",
     "terms": "الشروط والأحكام",
     "notification": "الإشعارات"
+  },
+"categories": {
+   "offers": "عروض",
+    "electronics": "إلكترونيات",
+    "fashion": "موضة",
+    "babyProducts": "منتجات الأطفال",
+    "cosmetics": "مستحضرات تجميل",
+    "electricalAppliances": "الأجهزة الكهربائية",
+    "animalSupplies": "مستلزمات الحيوانات",
+    "categories":"الاقسام"
+  },
+   "search":{
+    "searchPlaceholder": "البحث عن منتج",
+    "searchHistory": "تاريخ البحث",
+    "clearAll": "حذف الكل",
+    "products": "المنتجات",
+    "noProductsFound": "لم يتم العثور على منتجات",
+    "voiceSearchNotSupported": "متصفحك لا يدعم البحث الصوتي",
+    "voiceSearchStarted": "بدأ البحث الصوتي...",
+    "voiceSearchEnded": "انتهى البحث الصوتي."
   },
   "profile": {
     "title": "الملف الشخصي",
@@ -147,12 +171,7 @@
     "orderId": "رقم الطلب",
     "items": "العناصر"
   },
-  "categories": {
-    "all": "الكل",
-    "pending": "قيد الانتظار",
-    "completed": "مكتمل",
-    "cancelled": "ملغي"
-  },
+ 
   "noOrdersFound": "لم يتم العثور على طلبات",
   "cart": {
     "title": "سلة التسوق الخاصة بي",

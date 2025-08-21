@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
+import { ThemeProvider } from "@/components/providers/theme";
+import Header from "@/components/header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,11 +37,19 @@ export default async function RootLayout({
   return (
     <html lang={locale || "en"} dir={locale === "ar" ? "rtl" : "ltr"}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg--foreground`}
       >
         <NextIntlClientProvider messages={messages}>
           <div className="flex min-h-screen flex-col" id="app_wrapper">
-            {children}
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="light"
+              enableSystem
+              disableTransitionOnChange={true}
+            >
+              <Header />
+              {children}
+            </ThemeProvider>
           </div>
         </NextIntlClientProvider>
       </body>

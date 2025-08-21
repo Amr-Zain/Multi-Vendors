@@ -1,9 +1,9 @@
 import React from "react";
-import LocalePath from "@/components/LocalePath";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Cute from "@/assets/images/notFound.png";
 import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/routing";
 
 export default function NotFound() {
   const t = useTranslations("NotFoundPage");
@@ -22,7 +22,7 @@ export default function NotFound() {
         </h1>
         <p>{t('description')}</p>
         <Button className="bg-primary mt-5 flex !h-10 !cursor-pointer justify-center rounded-full px-6 text-white">
-          <LocalePath href="/">{t("returnHome")}</LocalePath>
+          <Link href="/">{t("returnHome")}</Link>
         </Button>
       </div>
     </div>

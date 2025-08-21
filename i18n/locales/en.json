@@ -6,7 +6,9 @@
   },
   "NAV": {
     "lang": "ltr",
-
+    "policy": "Return POLICY",
+    "FAQ": "Frequent Asked Questions",
+    "support": "الدعم الفني",
     "home": "Home",
     "about": "About us",
     "Services": "Services",
@@ -21,9 +23,28 @@
     "orders": "Orders",
     "login": "Log In",
     "offers": "Offers",
-    "privacy": "PRIVACY POLICY",
     "terms": "TERMS & CINDITIONS",
     "notification": "Notification"
+  },
+  "categories": {
+    "offers": "Offers",
+    "electronics": "Electronics",
+    "fashion": "Fashion",
+    "babyProducts": "Baby Products",
+    "cosmetics": "Cosmetics",
+    "electricalAppliances": "Electrical Appliances",
+    "animalSupplies": "Animal Supplies",
+    "categories": "Categories"
+  },
+  "search": {
+    "searchPlaceholder": "Search for a product",
+    "searchHistory": "Search History",
+    "clearAll": "Clear All",
+    "products": "Products",
+    "noProductsFound": "No products found",
+    "voiceSearchNotSupported": "Your browser does not support voice search",
+    "voiceSearchStarted": "Voice search started...",
+    "voiceSearchEnded": "Voice search ended."
   },
   "profile": {
     "title": "Profile",
@@ -85,7 +106,7 @@
     "confirm": "Confirm",
     "errorSubmittingReview": "Error submitting review"
   },
-   "confirmModal": {
+  "confirmModal": {
     "logoutTitle": "Logout",
     "logoutDesc": "Are you sure you want to log out?",
     "confirmDesc": "Are you sure you want to confirm?"
@@ -150,12 +171,7 @@
     "orderId": "Order ID",
     "items": "Items"
   },
-  "categories": {
-    "all": "All",
-    "pending": "Pending",
-    "completed": "Completed",
-    "cancelled": "Cancelled"
-  },
+
   "noOrdersFound": "No Orders Found",
   "cart": {
     "title": " My Cart",
@@ -223,7 +239,7 @@
     "description": "Description"
   },
   "checkout": {
-    "title":"Checkout",
+    "title": "Checkout",
     "orderType": "Order Type",
     "delivery": "Delivery",
     "takeaway": "Takeaway",
