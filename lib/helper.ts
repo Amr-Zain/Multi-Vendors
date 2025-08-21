@@ -63,3 +63,23 @@ export const MOCK_PRODUCTS: Product[] = [
       "https://images.unsplash.com/photo-1542272604-787c3835535d?w=100&h=100&fit=crop&crop=center",
   },
 ];
+
+export const categories = [
+  // { id: 1, label: "offers", href: "/categories/offers" },
+  { id: 2, label: "categories.electronics", href: "/categories/electronics" },
+  { id: 3, label: "categories.fashion", href: "/categories/mens-and-womens-fashion" },
+  { id: 4, label: "categories.babyProducts", href: "/categories/baby-products" },
+  { id: 5, label: "categories.cosmetics", href: "/categories/cosmetics" },
+  {
+    id: 6,
+    label: "categories.electricalAppliances",
+    href: "/categories/electrical-appliances",
+  },
+  { id: 7, label: "categories.animalSupplies", href: "/categories/animal-supplies" },
+];
+export const menu = [
+    { id: 8, label: "NAV.home", href: "/" },
+    { id: 9, label: "NAV.FAQ", href: "/faq" },
+    { id: 10, label: "NAV.about", href: "/about-us" },
+
+]
