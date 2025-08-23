@@ -9,7 +9,7 @@ interface CustomFetchOptions extends RequestInit {
     };
 }
 
-export async function customFetch<T>(endpoint: string, options: CustomFetchOptions = {}): Promise<T> {
+export async function customServerFetch<T>(endpoint: string, options: CustomFetchOptions = {}): Promise<T> {
     const baseURL = process.env.NEXT_PUBLIC_BASE_URL || '';
     const url = new URL(endpoint, baseURL);
     const serverCookies = await cookies();
