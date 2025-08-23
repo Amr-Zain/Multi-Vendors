@@ -31,7 +31,7 @@ async function HomeSlider({ slides }: HomeSliderProps) {
     <div className="py-20 space-y-10 container">
       <Slider
         carouselClass="bg-primary h-[300px] md:h-[350px]"
-        slides={slides.map((slide) => (
+        slides={[slides.map((slide) => (
           <div key={slide.id} className="px-4 md:px-8 py-0 h-full">
             <div className="relative flex h-full items-center">
               <div className="flex-1 space-y-4 text-primary-foreground">
@@ -58,12 +58,12 @@ async function HomeSlider({ slides }: HomeSliderProps) {
               </div>
             </div>
           </div>
-        ))}
+        ))[0]]}
       />
       <div>
-        <SliderSection title="offers" to="/categories/offers">
+        <SliderSection title="offers" to="/categories/offers" className="section-bg-muted py-6">
           <Slider
-            itemsClass="basis-4/5 ps-1 sm:basis-1/2 md:basis-1/3 xl:basis-1/4 2xl:basis-1/5"
+            itemsClass="basis-1/2 md:ps-1 md:basis-1/3 xl:basis-1/4 2xl:basis-1/5"
             showButtons={false}
             slides={fakeProducts.map((product, index) => (
               <ProductCard

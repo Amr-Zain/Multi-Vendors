@@ -9,19 +9,22 @@ import {
 import { cn } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
 
-interface HomeSliderProps {
+interface SliderProps {
   slides: React.ReactNode[];
   showButtons?: boolean;
   carouselClass?: string;
   itemsClass?: string;
+  stopEventPropagation?: boolean;
+  
 }
 
 function Slider({
   slides,
   showButtons = true,
-  carouselClass="",
-  itemsClass="",
-}: HomeSliderProps) {
+  carouselClass = "",
+  itemsClass = "",
+  stopEventPropagation = false,
+}: SliderProps) {
   if (!slides || slides.length === 0) {
     return null;
   }
@@ -44,45 +47,48 @@ function Slider({
   }, [api]);
 
   return (
-    <div className="w-full container">{/*   */}
-      <Carousel
-        opts={{
-          align: "start",
-          loop: true,
-          direction,
-        }}
-        setApi={setApi}
-        className={"relative overflow-hidden rounded-xl h-full "+carouselClass}
-      >
-        <CarouselContent className="h-full">
-          {slides.map((slide, index) => (
-            <CarouselItem
-              className={itemsClass}
-              key={`slide ${index}`}
-            >
-              {slide}
-            </CarouselItem>
+    <Carousel
+      opts={{
+        align: "start",
+        loop: true,
+        direction,
+      }}
+
+      setApi={setApi}
+      {...(stopEventPropagation && {
+        onTouchStart: (e) => e.stopPropagation(),
+        onTouchMove: (e) => e.stopPropagation(),
+        onMouseDown: (e) => e.stopPropagation(),
+        onMouseUp:(e) => e.stopPropagation(),
+        onMouseMove:(e) => e.stopPropagation()
+      })}
+      className={"relative overflow-hidden rounded-xl h-full " + carouselClass}
+    >
+      <CarouselContent className="h-full">
+        {slides.map((slide, index) => (
+          <CarouselItem className={itemsClass} key={`slide ${index}`}>
+            {slide}
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      {showButtons && (
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              className={cn(
+                "h-2 rounded-full transition-all duration-300 cursor-pointer",
+                index + 1 === current
+                  ? "bg-primary-foreground w-12"
+                  : "bg-primary-foreground/10 h w-2"
+              )}
+              onClick={() => api?.scrollTo(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
           ))}
-        </CarouselContent>
-        {showButtons && (
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                className={cn(
-                  "h-2 rounded-full transition-all duration-300 cursor-pointer",
-                  index + 1 === current
-                    ? "bg-primary-foreground w-12"
-                    : "bg-primary-foreground/10 h w-2"
-                )}
-                onClick={() => api?.scrollTo(index)}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
-        )}
-      </Carousel>
-    </div>
+        </div>
+      )}
+    </Carousel>
   );
 }
 export default Slider;

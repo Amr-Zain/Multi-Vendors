@@ -8,6 +8,7 @@ import { PlusIcon, Star } from "../general/Icons";
 import { Product } from "@/types/products";
 import { Button } from "../ui/button";
 import { Plus } from "lucide-react";
+import Slider from "../general/Slider";
 
 interface ProductCardProps {
   product: Product;
@@ -33,21 +34,33 @@ async function ProductCard({
   const t = await getTranslations();
 
   const cardBaseDelay = index * 0.05;
+  const ImageList = main.map((image) => (
+    <Image
+      src={image}
+      alt={name}
+      height={350}
+      width={350}
+      className="size-full object-contain"
+    />
+  ));
   return (
     <FadeIn direction="up" delay={cardBaseDelay}>
-      <Card className="relative mx-auto w-full gap-2 overflow-hidden p-2 bg-transparent border-none shadow-none">
+      <Card className="relative mx-auto w-full gap-2 overflow-hidden p-2  bg-transparent border-none shadow-none">
         <ScaleIn delay={cardBaseDelay + 0.1}>
-          <div className="relative h-58 max-h-62 overflow-hidden rounded-xl">
-            <Image
-              src={main[0]}
-              alt={name}
-              fill
-              className="h-full object-cover transition-transform duration-500 hover:scale-110"
+          <div className="relative h-82 max-h-110 overflow-hidden bg-card px-10 rounded-lg">
+            <Slider
+              showButtons={false}
+              stopEventPropagation
+            //   itemsClass="flex justify-center items-center"
+              slides={
+                ImageList.length === 1
+                  ? [...ImageList, ...ImageList]
+                  : ImageList
+              }
             />
-
             <ScaleIn
               delay={cardBaseDelay + 0.55}
-              className="absolute top-2 end-2"
+              className="absolute top-2 end-2" 
             >
               <FavoritButton isFavorit={is_favorite} favId={id} id={id} />
             </ScaleIn>
@@ -55,7 +68,9 @@ async function ProductCard({
               delay={cardBaseDelay + 0.55}
               className="absolute bottom-2 start-2"
             >
-              <Button><Plus /></Button>
+              <Button>
+                <Plus />
+              </Button>
             </ScaleIn>
           </div>
         </ScaleIn>
@@ -63,16 +78,19 @@ async function ProductCard({
         <CardTitle>
           <div className="flex gap-2">
             <FadeIn direction="left" delay={cardBaseDelay + 0.3}>
-              <Link href={`/menu/${slug}`} className="text-foreground text-sm font-normal">
+              <Link
+                href={`/products/${slug}`}
+                className="text-foreground text-lg font-normal"
+              >
                 {name}
               </Link>
             </FadeIn>
           </div>
         </CardTitle>
-         <FadeIn direction="down" delay={cardBaseDelay + 0.25}>
-          <div className="flex items-center justify-start gap-1 rounded-full">
+        <FadeIn direction="down" delay={cardBaseDelay + 0.25}>
+          <div className="flex items-center justify-start gap-1">
             <Star className="transition-transform duration-300 hover:rotate-12" />
-            <span className="font-bold">{rate.toFixed(1)}</span>
+            <span>{rate.toFixed(1)}</span>
           </div>
         </FadeIn>
         <FadeIn direction="up" delay={cardBaseDelay + 0.45}>
@@ -82,9 +100,9 @@ async function ProductCard({
                 <FadeIn
                   direction="left"
                   delay={cardBaseDelay + 0.5}
-                  className="text-foreground"
+                  className="text-foreground space-x-2"
                 >
-                      <span className="font-bold">
+                  <span className="font-bold">
                     {price_after_discount}
                     {/* {priceDetails.currency} */}
                   </span>{" "}
@@ -92,10 +110,8 @@ async function ProductCard({
                     {price}
                     {/* {priceDetails.currency} */}
                   </span>{" "}
-                
-                  <span className="text-[12px] font-semibold">
-                    <span>{t("TEXT.off")}</span>
-                    <span>{discount}</span>
+                  <span className="text-[12px] font-semibold text-green-600">
+                    {t("TEXT.off")}{" "}{discount}%
                   </span>
                 </FadeIn>
               </>
@@ -110,7 +126,6 @@ async function ProductCard({
             )}
           </div>
         </FadeIn>
-       
       </Card>
     </FadeIn>
   );
