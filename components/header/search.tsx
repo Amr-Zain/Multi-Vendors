@@ -8,7 +8,9 @@ import { Separator } from "@/components/ui/separator";
 import SearchCard from "./SearchCard";
 import { useTranslations } from "next-intl";
 import useVoiceInput from "@/hooks/useVoiceInput";
-import { debounce, MOCK_PRODUCTS, Product } from "@/lib/helper";
+import { debounce } from "@/lib/helper";
+import useFetch from "@/hooks/useFetch";
+import { Product } from "@/types/products";
 
 // Voice Wave Animation Component
 const VoiceWave = ({ isActive }: { isActive: boolean }) => {
@@ -36,7 +38,6 @@ const VoiceWave = ({ isActive }: { isActive: boolean }) => {
 const SearchComponent: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [searchHistory, setSearchHistory] = useState<string[]>([]);
-  const [searchResults, setSearchResults] = useState<Product[]>([]);
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
 
   const searchContainerRef = useRef<HTMLDivElement>(null);
@@ -47,6 +48,14 @@ const SearchComponent: React.FC = () => {
       setShowDropdown(true);
     },
   });
+  const { data:searchResults } = useFetch<Product[]>({
+    endpoint: "search",
+    queryKey: ["search", searchQuery],
+    params: { keyword: searchQuery },
+    enabled: searchQuery.length !==0
+    
+  });
+  console.log(searchResults)
   const t = useTranslations("search");
 
   useEffect(() => {
@@ -69,25 +78,10 @@ const SearchComponent: React.FC = () => {
     }
   };
 
-  const performSearch = useCallback(
-    debounce((query: string) => {
-      if (query.trim() === "") {
-        setSearchResults([]);
-        return;
-      }
-      //api call
-      const filteredProducts = MOCK_PRODUCTS.filter((product) =>
-        product.name.toLowerCase().includes(query.toLowerCase())
-      );
-      setSearchResults(filteredProducts);
-      setShowDropdown(true);
-    }, 300),
-    []
-  );
-
+/* 
   useEffect(() => {
     performSearch(searchQuery);
-  }, [searchQuery, performSearch]);
+  }, [searchQuery, performSearch]); */
 
   const saveSearchToHistory = useCallback(
     (query: string) => {
@@ -134,7 +128,7 @@ const SearchComponent: React.FC = () => {
 
   const handleClearSearch = () => {
     setSearchQuery("");
-    setSearchResults([]);
+    // setSearchResults([]);
     setShowDropdown(false);
   };
 
@@ -268,18 +262,18 @@ const SearchComponent: React.FC = () => {
             {/* Separator between sections */}
             {searchHistory.length > 0 &&
               searchQuery.trim() === "" &&
-              searchResults.length > 0 && <Separator />}
+              searchResults?.length > 0 && <Separator />}
 
             {/* Search Results Section */}
             {searchQuery.trim() !== "" && (
-              <div className="p-4 my-2 h-90 overflow-y-auto">
+              <div className="p-4 my-2 max-h-90 overflow-y-auto">
                 <div className="text-sm font-medium text-foreground/90">
                   {t("products")}
                 </div>
-                {searchResults.length > 0 ? (
+                {searchResults?.length > 0 ? (
                   <div className="space-y-2">
-                    {searchResults.map((product) => (
-                      <SearchCard key={product.id} {...product} />
+                    {(searchResults as Product[]).map((product) => (
+                      <SearchCard key={product.id} product={product} />
                     ))}
                   </div>
                 ) : (

@@ -14,7 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { Link } from "@/i18n/routing";
 import { Button } from "../ui/button";
 import Search from "./search";
-import Categories from "./Catigories";
+import Categories from "./Categories";
 import { categories, menu } from "@/lib/helper";
 import { GeneralSheet } from "../general/Sheet";
 
@@ -46,7 +46,7 @@ async function Header() {
                     className="flex gap-2 border-b-1 py-3 text-green-400 hover:text-foreground text-xl"
                   >
                     <PersentageIcon className="size-4" />
-                    {t("offers")}
+                    {t("categories.offers")}
                   </Link>
                 </li>
                 {[...menu,...categories].map(({ id, href, label }) => (
