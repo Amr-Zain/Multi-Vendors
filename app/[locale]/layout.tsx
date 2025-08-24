@@ -54,6 +54,7 @@ const queryClient = new QueryClient({
             >
               <Header />
                 {children}
+              
             </ThemeProvider>
               </ReactQueryProvider>
           </div>

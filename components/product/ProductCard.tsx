@@ -5,73 +5,96 @@ import { Link } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 import { FadeIn, ScaleIn } from "../animations";
 import { PlusIcon, Star } from "../general/Icons";
-import { Product } from "@/types/products";
+import { Product, Vendor } from "@/types/products";
 import { Button } from "../ui/button";
 import { Plus } from "lucide-react";
 import Slider from "../general/Slider";
 
 interface ProductCardProps {
-  product: Product;
+  product: Product | Vendor;
   isOffer?: boolean;
   index?: number;
+  isVendor?: boolean;
 }
 
 async function ProductCard({
-  product: {
-    id,
-    name,
-    rate,
-    is_favorite,
-    slug,
-    price,
-    price_after_discount,
-    discount_type,
-    discount,
-    main,
-  },
+  product,
+  isVendor = false,
   index = 0,
 }: ProductCardProps) {
   const t = await getTranslations();
 
   const cardBaseDelay = index * 0.05;
-  const ImageList = main.map((image) => (
-    <Image
-      src={image}
-      alt={name}
-      height={350}
-      width={350}
-      className="size-full object-contain"
-    />
-  ));
+
+  // Extract common properties
+  const { id, rate, is_favorite } = product;
+
+  // Extract type-specific properties
+  const name = isVendor
+    ? (product as Vendor).company_name
+    : (product as Product).name;
+  const mainImages = isVendor
+    ? (product as Vendor).logo
+    : (product as Product).main;
+
+  const slug = isVendor
+    ? (product as Vendor).username
+    : (product as Product).slug;
+
+  const price = isVendor ? undefined : (product as Product).price;
+  const price_after_discount = isVendor
+    ? undefined
+    : (product as Product).price_after_discount;
+  const discount_type = isVendor
+    ? undefined
+    : (product as Product).discount_type;
+  const discount = isVendor ? undefined : (product as Product).discount;
+
   return (
     <FadeIn direction="up" delay={cardBaseDelay}>
-      <Card className="relative mx-auto w-full gap-2 overflow-hidden p-2  bg-transparent border-none shadow-none">
+      <Card className="relative mx-auto w-full gap-2 overflow-hidden p-2 bg-transparent border-none shadow-none">
         <ScaleIn delay={cardBaseDelay + 0.1}>
           <div className="relative h-82 max-h-110 overflow-hidden bg-card px-10 rounded-lg">
-            <Slider
-              showButtons={false}
-              stopEventPropagation
-            //   itemsClass="flex justify-center items-center"
-              slides={
-                ImageList.length === 1
-                  ? [...ImageList, ...ImageList]
-                  : ImageList
-              }
-            />
+            {isVendor ? (
+              <Image
+                src={mainImages as string}
+                alt={name}
+                height={350}
+                width={350}
+                className="size-full object-contain"
+              />
+            ) : (
+              <Slider
+                showButtons={false}
+                stopEventPropagation
+                slides={(mainImages as string[])?.map((image, idx) => (
+                  <Image
+                    key={idx}
+                    src={image}
+                    alt={name}
+                    height={350}
+                    width={350}
+                    className="size-full object-contain"
+                  />
+                ))}
+              />
+            )}
             <ScaleIn
               delay={cardBaseDelay + 0.55}
-              className="absolute top-2 end-2" 
+              className="absolute top-2 end-2"
             >
               <FavoritButton isFavorit={is_favorite} favId={id} id={id} />
             </ScaleIn>
-            <ScaleIn
-              delay={cardBaseDelay + 0.55}
-              className="absolute bottom-2 start-2"
-            >
-              <Button>
-                <Plus />
-              </Button>
-            </ScaleIn>
+            {!isVendor && (
+              <ScaleIn
+                delay={cardBaseDelay + 0.55}
+                className="absolute bottom-2 start-2"
+              >
+                <Button>
+                  <Plus />
+                </Button>
+              </ScaleIn>
+            )}
           </div>
         </ScaleIn>
 
@@ -79,7 +102,7 @@ async function ProductCard({
           <div className="flex gap-2">
             <FadeIn direction="left" delay={cardBaseDelay + 0.3}>
               <Link
-                href={`/products/${slug}`}
+                href={isVendor ? `/vendors/${slug}` : `/products/${slug}`}
                 className="text-foreground text-lg font-normal"
               >
                 {name}
@@ -93,39 +116,42 @@ async function ProductCard({
             <span>{rate.toFixed(1)}</span>
           </div>
         </FadeIn>
-        <FadeIn direction="up" delay={cardBaseDelay + 0.45}>
-          <div className="flex items-center justify-between pt-2">
-            {discount_type === "percentage" ? (
-              <>
-                <FadeIn
-                  direction="left"
-                  delay={cardBaseDelay + 0.5}
-                  className="text-foreground space-x-2"
-                >
-                  <span className="font-bold">
-                    {price_after_discount}
-                    {/* {priceDetails.currency} */}
-                  </span>{" "}
-                  <span className="text-muted-foreground line-through transition-opacity duration-300">
-                    {price}
-                    {/* {priceDetails.currency} */}
-                  </span>{" "}
-                  <span className="text-[12px] font-semibold text-green-600">
-                    {t("TEXT.off")}{" "}{discount}%
-                  </span>
-                </FadeIn>
-              </>
-            ) : (
-              <div className="flex w-full items-center justify-between">
-                <FadeIn direction="left" delay={cardBaseDelay + 0.5}>
-                  <span className="text-text font-bold">
-                    {price} {/* {priceDetails.currency} */}
-                  </span>
-                </FadeIn>
-              </div>
-            )}
-          </div>
-        </FadeIn>
+
+        {!isVendor && price && (
+          <FadeIn direction="up" delay={cardBaseDelay + 0.45}>
+            <div className="flex items-center justify-between pt-2">
+              {discount_type === "percentage" ? (
+                <>
+                  <FadeIn
+                    direction="left"
+                    delay={cardBaseDelay + 0.5}
+                    className="text-foreground space-x-2"
+                  >
+                    <span className="font-bold">
+                      {price_after_discount}
+                      {/* {priceDetails.currency} */}
+                    </span>{" "}
+                    <span className="text-muted-foreground line-through transition-opacity duration-300">
+                      {price}
+                      {/* {priceDetails.currency} */}
+                    </span>{" "}
+                    <span className="text-[12px] font-semibold text-green-600">
+                      {t("TEXT.off")} {discount}%
+                    </span>
+                  </FadeIn>
+                </>
+              ) : (
+                <div className="flex w-full items-center justify-between">
+                  <FadeIn direction="left" delay={cardBaseDelay + 0.5}>
+                    <span className="text-text font-bold">
+                      {price} {/* {priceDetails.currency} */}
+                    </span>
+                  </FadeIn>
+                </div>
+              )}
+            </div>
+          </FadeIn>
+        )}
       </Card>
     </FadeIn>
   );

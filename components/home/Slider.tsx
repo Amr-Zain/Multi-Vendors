@@ -3,23 +3,8 @@ import Image from "next/image";
 
 import Slider from "../general/Slider";
 import { getTranslations } from "next-intl/server";
-import { fakeProducts } from "@/lib/helper";
-import ProductCard from "../product/ProductCard";
-import { FadeIn } from "../animations";
-import { Link } from "@/i18n/routing";
-import { ArrowRight } from "../general/Icons";
-import SliderSection from "./SliderSection";
+import { HomeSlide } from "@/types/products";
 
-export interface HomeSlide {
-  description: string;
-  discount: number;
-  end_at: string;
-  id: number;
-  image: string;
-  order: number;
-  start_at: string;
-  title: string;
-}
 
 interface HomeSliderProps {
   slides: HomeSlide[];
@@ -28,7 +13,6 @@ interface HomeSliderProps {
 async function HomeSlider({ slides }: HomeSliderProps) {
   const t = await getTranslations();
   return (
-    <div className="py-20 space-y-10 container">
       <Slider
         carouselClass="bg-primary h-[300px] md:h-[350px]"
         slides={[slides.map((slide) => (
@@ -60,22 +44,6 @@ async function HomeSlider({ slides }: HomeSliderProps) {
           </div>
         ))[0]]}
       />
-      <div>
-        <SliderSection title="offers" to="/categories/offers" className="section-bg-muted py-6">
-          <Slider
-            itemsClass="basis-1/2 md:ps-1 md:basis-1/3 xl:basis-1/4 2xl:basis-1/5"
-            showButtons={false}
-            slides={fakeProducts.map((product, index) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                index={index}
-              />
-            ))}
-          />
-        </SliderSection>
-      </div>
-    </div>
   );
 }
 export default HomeSlider;

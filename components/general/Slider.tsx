@@ -15,7 +15,6 @@ interface SliderProps {
   carouselClass?: string;
   itemsClass?: string;
   stopEventPropagation?: boolean;
-  
 }
 
 function Slider({
@@ -53,14 +52,13 @@ function Slider({
         loop: true,
         direction,
       }}
-
       setApi={setApi}
       {...(stopEventPropagation && {
         onTouchStart: (e) => e.stopPropagation(),
         onTouchMove: (e) => e.stopPropagation(),
         onMouseDown: (e) => e.stopPropagation(),
-        onMouseUp:(e) => e.stopPropagation(),
-        onMouseMove:(e) => e.stopPropagation()
+        onMouseUp: (e) => e.stopPropagation(),
+        onMouseMove: (e) => e.stopPropagation(),
       })}
       className={"relative overflow-hidden rounded-xl h-full " + carouselClass}
     >

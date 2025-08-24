@@ -1,5 +1,5 @@
 export interface Product {
- id: number;
+  id: number;
   main: string[];
   video: string;
   rate: number;

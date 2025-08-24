@@ -238,6 +238,7 @@
     box-shadow: 0 0 0 100vmax var(--muted);
     clip-path: inset(0 -100vmax);
   }
+ 
 }
 
 html[dir="rtl"] body {

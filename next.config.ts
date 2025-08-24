@@ -3,6 +3,7 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
+    domains: ['multi-vendors-989.saied.aait-d.com'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -10,6 +11,7 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/storage/**',
       },
+
     ],
   },
   experimental: {
