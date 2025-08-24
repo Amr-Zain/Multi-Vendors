@@ -1,7 +1,6 @@
 // import { Button } from "@/components/ui/button";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
-import Cute from "@/assets/images/notFound.png";
 import { Link } from "@/i18n/routing";
 
 export default async function NotFound() {
@@ -13,7 +12,7 @@ export default async function NotFound() {
         <Image
           width="500"
           height="500"
-          src={Cute}
+          src={"/assets/images/notFound.png"}
           alt="not found icon"
           loading="lazy"
         />

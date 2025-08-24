@@ -1,7 +1,6 @@
 import React from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Cute from "@/assets/images/notFound.png";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
 
@@ -13,7 +12,7 @@ export default function NotFound() {
         <Image
           width="500"
           height="500"
-          src={Cute}
+          src={"/assets/images/notFound.png"}
           alt="not found icon"
           loading="lazy"
         />

@@ -8,8 +8,9 @@
     "lang": "ltr",
     "policy": "Return POLICY",
     "FAQ": "Frequent Asked Questions",
-    "support": "الدعم الفني",
+    "support": "Technical Support",
     "home": "Home",
+    "complaints": "Complaints & Suggestions",
     "about": "About us",
     "Services": "Services",
     "news": "News",
@@ -34,10 +35,25 @@
     "cosmetics": "Cosmetics",
     "electricalAppliances": "Electrical Appliances",
     "animalSupplies": "Animal Supplies",
-    "categories": "Categories"
+    "categories": "Categories",
+    "foodDrinks": "Food and Drinks",
+    "clothes": "Clothes"
+  },
+  "footer": {
+    "downloadTheApp": "Download The App",
+    "followUsOn": "Follow us on",
+    "copyright": "All rights reserved © Multi Store Company 2024",
+    "appStoreAlt": "Download on the App Store",
+    "googlePlayAlt": "Get it on Google Play",
+    "socialMedia": {
+      "facebook": "Facebook",
+      "youtube": "Youtube",
+      "x": "X"
+    }
   },
   "TEXT": {
     "off": "Off",
+    "more": "More",
     "order": "Order",
     "reservation": "Reservation",
     "followInstgram": "follow us on instagram",
@@ -131,23 +147,7 @@
     "selectSubcategories": "Select Subcategories",
     "applyFilter": "Apply Filter"
   },
-  "Footer": {
-    "sectionsHeading": "Sections",
-    "linksHeading": "Links",
-    "contactHeading": "Contact",
-    "menu": "Menu",
-    "offers": "Offers",
-    "reservation": "Reservation",
-    "favorite": "Favorite",
-    "privacyPolicy": "Privacy Policy",
-    "faqs": "FAQs",
-    "termsConditions": "Terms & Conditions",
-    "callCenter": "Call Center",
-    "email": "Email",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Commodo libero viverra dapibus odio sit malesuada in quis. Arcu tristique elementum viverra integer id.",
-    "companyName": "Your Company Name",
-    "rightsReserved": "All rights reserved"
-  },
+  
   "NotFoundPage": {
     "title": "Not Found",
     "description": "Could not find requested resource",

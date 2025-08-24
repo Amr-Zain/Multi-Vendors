@@ -11,8 +11,8 @@ import {
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import Cookies from "js-cookie";
-import USFlage from "@/assets/svg/en.svg";
-import ArFlage from "@/assets/svg/ar.svg";
+import USFlage from "@/public/assets/svg/en.svg";
+import ArFlage from "@/public/assets/svg/ar.svg";
 import Image from "next/image";
 
 export function SelectLanguage() {

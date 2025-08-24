@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/providers/theme";
 import Header from "@/components/header";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryProvider } from "@/components/providers/ReactQueryProvider";
+import Footer from "@/components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -54,7 +55,7 @@ const queryClient = new QueryClient({
             >
               <Header />
                 {children}
-              
+              <Footer />
             </ThemeProvider>
               </ReactQueryProvider>
           </div>

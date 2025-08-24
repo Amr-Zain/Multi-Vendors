@@ -4,14 +4,26 @@
     "ar": "إنجليزي",
     "en": "عربي"
   },
-
+"footer": {
+    "downloadTheApp": "حمل التطبيق",
+    "followUsOn": "تابعنا على",
+    "copyright": "جميع الحقوق محفوظة © شركة مالتي ستور 2024",
+    "appStoreAlt": "حمل من متجر التطبيقات",
+    "googlePlayAlt": "احصل عليه من جوجل بلاي",
+    "socialMedia": {
+      "facebook": "فيسبوك",
+      "youtube": "يوتيوب",
+      "x": "اكس"
+    }
+  },
   "NAV": {
     "lang": "rtl",
     "policy": "سياسة الإسترجاع والخصوصية",
     "FAQ": "الأسئلة الشائعة",
     "support": "الدعم الفني",
-    "location":"توصيل الي:",
-    "login":"تسجيل الدخول",
+    "complaints": "الشكاوي والإقتراحات",
+    "location": "توصيل الي:",
+    "login": "تسجيل الدخول",
     "home": "الرئيسية",
     "about": "من نحن",
     "Services": "الخدمات",
@@ -28,18 +40,21 @@
     "terms": "الشروط والأحكام",
     "notification": "الإشعارات"
   },
-"categories": {
-   "offers": "عروض",
+  "categories": {
+    "offers": "عروض",
     "electronics": "إلكترونيات",
     "fashion": "موضة",
     "babyProducts": "منتجات الأطفال",
     "cosmetics": "مستحضرات تجميل",
     "electricalAppliances": "الأجهزة الكهربائية",
     "animalSupplies": "مستلزمات الحيوانات",
-    "categories":"الاقسام"
+    "categories": "الاقسام",
+    "foodDrinks": "الطعام والمشروبات",
+    "clothes": "ملابس"
   },
-   "TEXT": {
-    "off":"خصم",
+  "TEXT": {
+    "off": "خصم",
+    "more": "المزيد",
     "order": "طلب",
     "reservation": "حجز",
     "notifications": "الإشعارات",
@@ -74,8 +89,7 @@
     "changeNotificationsDesc": "هل أنت متأكد من أنك تريد تغيير حالة الإشعارات؟"
   },
 
-
-   "search":{
+  "search": {
     "searchPlaceholder": "البحث عن منتج",
     "searchHistory": "تاريخ البحث",
     "clearAll": "حذف الكل",
@@ -100,7 +114,7 @@
     "fromTimeRequired": "يرجى تحديد وقت البدء.",
     "toTimeRequired": "يرجى تحديد وقت الانتهاء."
   },
- 
+
   "confirmModal": {
     "logoutTitle": "تسجيل الخروج",
     "logoutDesc": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
@@ -133,23 +147,7 @@
     "selectSubcategories": "اختر الفئات الفرعية",
     "applyFilter": "تطبيق الفلاتر"
   },
-  "Footer": {
-    "sectionsHeading": "الأقسام",
-    "linksHeading": "الروابط",
-    "contactHeading": "تواصل معنا",
-    "menu": "القائمة",
-    "offers": "العروض",
-    "reservation": "الحجز",
-    "favorite": "المفضلة",
-    "privacyPolicy": "سياسة الخصوصية",
-    "faqs": "الأسئلة الشائعة",
-    "termsConditions": "الشروط والأحكام",
-    "callCenter": "مركز الاتصال",
-    "email": "البريد الإلكتروني",
-    "description": "لوريم إيبسوم هو ببساطة نص شكلي يُستخدم في صناعة الطباعة والتنضيد. يأتي من نص قياسي منذ القرن الخامس عشر.",
-    "companyName": "اسم شركتك",
-    "rightsReserved": "جميع الحقوق محفوظة"
-  },
+  
   "NotFoundPage": {
     "title": "غير موجود",
     "description": "تعذر العثور على المورد المطلوب",
@@ -174,7 +172,7 @@
     "orderId": "رقم الطلب",
     "items": "العناصر"
   },
- 
+
   "noOrdersFound": "لم يتم العثور على طلبات",
   "cart": {
     "title": "سلة التسوق الخاصة بي",

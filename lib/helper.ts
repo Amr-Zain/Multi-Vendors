@@ -19,6 +19,7 @@ export const categories = [
   { id: 2, label: "categories.electronics", href: "/categories/electronics" },
   { id: 3, label: "categories.fashion", href: "/categories/mens-and-womens-fashion" },
   { id: 4, label: "categories.babyProducts", href: "/categories/baby-products" },
+  {  id: 22,label: "categories.clothes", href: "/categories/clothes" },
   { id: 5, label: "categories.cosmetics", href: "/categories/cosmetics" },
   {
     id: 6,
@@ -26,12 +27,17 @@ export const categories = [
     href: "/categories/electrical-appliances",
   },
   { id: 7, label: "categories.animalSupplies", href: "/categories/animal-supplies" },
+  { id: 8, label: "categories.foodDrinks", href: "/categories/food-and-drinks" },
+  // {  id: 111,label: "Das", href: "/categories/das" },
+
 ];
 export const menu = [
-  { id: 8, label: "NAV.home", href: "/" },
-  { id: 9, label: "NAV.FAQ", href: "/faq" },
-  { id: 10, label: "NAV.about", href: "/about-us" },
-
+  { id: 9, label: "NAV.home", href: "/" },
+  { id: 10, label: "NAV.FAQ", href: "/faq" },
+  { id: 11, label: "NAV.about", href: "/about-us" },
+  {  id: 12, label: "NAV.support", href: "/support" },
+  {  id: 13, label: "NAV.complaints", href: "/complaints" },
+  {  id: 14, label: "NAV.policy", href: "/privacy" },
 ]
 
 export const fakeProducts = [
