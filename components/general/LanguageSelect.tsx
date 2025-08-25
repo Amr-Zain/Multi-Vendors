@@ -40,7 +40,7 @@ export function SelectLanguage() {
             <span role="img" aria-label="United States flag">
               <Image src={USFlage} alt="United States Flag" width={20} height={20} />
             </span>
-            <span className="ml-2">English</span>
+            <span className="ms-2">English</span>
           </SelectItem>
           <SelectItem value="ar">
             <span role="img" aria-label="Iraq flag">
